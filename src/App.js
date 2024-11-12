@@ -7,16 +7,10 @@ import c1 from "./images/c1.jpg";
 import c2 from "./images/c3.jpg";
 import c3 from "./images/c2.jpg";
 import c4 from "./images/c4.jpg";
+import logo from "./images/logo.png"
 import { useSwipeable } from 'react-swipeable';
 
 function App() {
-  const handlePopupOpen = () => {
-    window.open(
-      'https://api.leadconnectorhq.com/widget/form/93hSaxuOFHHyEbt5DXwW',
-      'popup',
-      'width=600,height=700,scrollbars=yes,resizable=yes'
-    );
-  };
 
   const clients = [
     {
@@ -46,6 +40,10 @@ function App() {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   const slideInterval = 5000; 
 
 
@@ -74,7 +72,7 @@ function App() {
     onSwipedLeft: nextSlide,
     onSwipedRight: prevSlide,
     preventDefaultTouchmoveEvent: true,
-    trackMouse: true // Enables swipe on desktop with mouse dragging
+    trackMouse: true 
   });
 
 
@@ -88,9 +86,27 @@ return (
 <p className="text-lg md:text-xl text-stone-600 mb-8 max-w-2xl mx-auto">
 The first scientifically-formulated intimate peel designed specifically for hyperpigmentation in melanin-rich skin.
 </p>
-<button className="bg-[#dfcc00]  px-8 py-4 rounded-full flex items-center justify-center mx-auto hover:bg-stone-800 transition-colors"    onClick={handlePopupOpen}>
+<button className="bg-[#dfcc00]  px-8 py-4 rounded-full flex items-center justify-center mx-auto hover:bg-stone-800 transition-colors"   onClick={openModal}>
 Book Now <ChevronRight className="ml-2" size={20} />
 </button>
+
+{isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-lg overflow-hidden w-full max-w-md mx-4 relative">
+            <button className="absolute top-2 right-2 text-gray-600" onClick={closeModal}>
+              ✖️
+            </button>
+            <div className="bg-yellow-500 p-4 flex justify-center">
+              <img src={logo} alt="Logo" className="w-32" />
+            </div>
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/93hSaxuOFHHyEbt5DXwW"
+              className="w-full h-96"
+              title="Consultation Form"
+            ></iframe>
+          </div>
+        </div>
+      )}
 </div>
 </section>
 
@@ -240,7 +256,7 @@ Boosts collagen synthesis
 <p className="text-lg md:text-xl mb-8 text-stone-300">
 Experience the first chemical peel specifically formulated for melanin-rich intimate areas.
 </p>
-<button className="bg-[#dfcc00] text-stone-900 px-8 py-4 rounded-full inline-flex items-center  transition-colors" onClick={handlePopupOpen}>
+<button className="bg-[#dfcc00] text-stone-900 px-8 py-4 rounded-full inline-flex items-center  transition-colors" onClick={openModal}>
 Book Now <ChevronRight className="ml-2" size={20} />
 </button>
 </div>
