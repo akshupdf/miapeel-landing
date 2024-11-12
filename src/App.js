@@ -7,6 +7,7 @@ import c1 from "./images/c1.jpg";
 import c2 from "./images/c3.jpg";
 import c3 from "./images/c2.jpg";
 import c4 from "./images/c4.jpg";
+import { useSwipeable } from 'react-swipeable';
 
 function App() {
   const handlePopupOpen = () => {
@@ -65,6 +66,17 @@ function App() {
     );
   };
 
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: nextSlide,
+    onSwipedRight: prevSlide,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true // Enables swipe on desktop with mouse dragging
+  });
+
 
 
 return (
@@ -72,18 +84,63 @@ return (
 {/* Hero Section */}
 <section className="relative h-screen flex items-center  bg-stone-100 bg-no-repeat sm:bg-contain lg:bg-cover bg-opacity-80" style={{backgroundImage : `url(${skin})`}}>
 <div className="max-w-4xl right-0 absolute lg:top-[50vh] sm:top-[45vh] px-6 text-center">
-<h1 className="text-4xl md:text-6xl font-light mb-6">Clinical-Grade Intimate Care for Melanin-Rich Skin</h1>
+<h1 className="text-3xl md:text-5xl font-light mb-6">Clinical-Grade Intimate Care for Melanin-Rich Skin</h1>
 <p className="text-lg md:text-xl text-stone-600 mb-8 max-w-2xl mx-auto">
 The first scientifically-formulated intimate peel designed specifically for hyperpigmentation in melanin-rich skin.
 </p>
-<button className="bg-stone-900 text-white px-8 py-4 rounded-full flex items-center justify-center mx-auto hover:bg-stone-800 transition-colors"    onClick={handlePopupOpen}>
-Book Consultation <ChevronRight className="ml-2" size={20} />
+<button className="bg-[#dfcc00]  px-8 py-4 rounded-full flex items-center justify-center mx-auto hover:bg-stone-800 transition-colors"    onClick={handlePopupOpen}>
+Book Now <ChevronRight className="ml-2" size={20} />
 </button>
 </div>
 </section>
 
+{/* Results Section */}
+<section className="py-8 bg-white h-screen">
+
+<h2 className="text-3xl md:text-4xl font-light mb-16 text-center">Verified Reviews</h2>
+<div className="relative w-full max-w-md mx-auto" {...swipeHandlers}>
+      <div className="flex flex-col items-center ">
+        <img
+          src={clients[currentIndex].image}
+          alt={clients[currentIndex].id}
+          className="sm:h-[50vh] lg:w-[80vh] object-cover shadow-lg p-4"
+        />
+        <div className="bg-white shadow-lg rounded-lg p-6 mt-4 text-center sm:w-[50vh] lg:w-[100vh] ">
+          <p className="text-gray-700 italic">"{clients[currentIndex].testimonial}"</p>
+        </div>
+      </div>
+
+      {/* Navigation Buttons */}
+      {/* <button
+        onClick={prevSlide}
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-600 bg-white rounded-full shadow-lg p-2 hover:bg-gray-100"
+      >
+        ‹
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-600 bg-white rounded-full shadow-lg p-2 hover:bg-gray-100"
+      >
+        ›
+      </button> */}
+
+      <div className="flex justify-center mt-4">
+        {clients.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-3 h-3 mx-1 rounded-full ${
+              index === currentIndex ? 'bg-gray-800' : 'bg-gray-300'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  
+</section>
+
 {/* Trust Indicators */}
-<section className="py-16 bg-white">
+<section className="py-[25vh] bg-white">
 <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
 <div className="flex flex-col items-center text-center">
 <Shield className="w-12 h-12 mb-4 text-stone-700" />
@@ -174,37 +231,7 @@ Boosts collagen synthesis
 </div>
 </section>
 
-{/* Results Section */}
-<section className="py-8 bg-white h-screen">
 
-<div className="relative w-full max-w-md mx-auto">
-      <div className="flex flex-col items-center">
-        <img
-          src={clients[currentIndex].image}
-          alt={clients[currentIndex].id}
-          className="h-[60vh] object-cover shadow-lg p-4"
-        />
-        <div className="bg-white shadow-lg rounded-lg p-6 mt-4 text-center">
-          <p className="text-gray-700 italic">"{clients[currentIndex].testimonial}"</p>
-        </div>
-      </div>
-
-      {/* Navigation Buttons */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-600 bg-white rounded-full shadow-lg p-2 hover:bg-gray-100"
-      >
-        ‹
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-600 bg-white rounded-full shadow-lg p-2 hover:bg-gray-100"
-      >
-        ›
-      </button>
-    </div>
-  
-</section>
 
 {/* CTA Section */}
 <section className="py-16 bg-stone-900 text-white">
@@ -213,8 +240,8 @@ Boosts collagen synthesis
 <p className="text-lg md:text-xl mb-8 text-stone-300">
 Experience the first chemical peel specifically formulated for melanin-rich intimate areas.
 </p>
-<button className="bg-white text-stone-900 px-8 py-4 rounded-full inline-flex items-center hover:bg-stone-100 transition-colors" onClick={handlePopupOpen}>
-Book Your Consultation <ChevronRight className="ml-2" size={20} />
+<button className="bg-[#dfcc00] text-stone-900 px-8 py-4 rounded-full inline-flex items-center  transition-colors" onClick={handlePopupOpen}>
+Book Now <ChevronRight className="ml-2" size={20} />
 </button>
 </div>
 </section>
