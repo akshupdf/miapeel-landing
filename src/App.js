@@ -86,7 +86,7 @@ return (
 <p className="text-lg md:text-xl text-stone-600 mb-8 max-w-2xl mx-auto">
 The first scientifically-formulated intimate peel designed specifically for hyperpigmentation in melanin-rich skin.
 </p>
-<button className="bg-[#dfcc00]  px-8 py-4 rounded-full flex items-center justify-center mx-auto hover:bg-stone-800 transition-colors"   onClick={openModal}>
+<button className="bg-[#D6BA05FF]  px-8 py-4 rounded-full flex items-center justify-center mx-auto  transition-colors"   onClick={openModal}>
 Book Now <ChevronRight className="ml-2" size={20} />
 </button>
 
@@ -96,7 +96,7 @@ Book Now <ChevronRight className="ml-2" size={20} />
             <button className="absolute top-2 right-2 text-gray-600" onClick={closeModal}>
               ✖️
             </button>
-            <div className="bg-yellow-500 p-4 flex justify-center">
+            <div className="bg-[#D6BA05FF] p-4 flex justify-center">
               <img src={logo} alt="Logo" className="w-32" />
             </div>
             <iframe
@@ -256,7 +256,7 @@ Boosts collagen synthesis
 <p className="text-lg md:text-xl mb-8 text-stone-300">
 Experience the first chemical peel specifically formulated for melanin-rich intimate areas.
 </p>
-<button className="bg-[#dfcc00] text-stone-900 px-8 py-4 rounded-full inline-flex items-center  transition-colors" onClick={openModal}>
+<button className="bg-[#D6BA05FF] text-stone-900 px-8 py-4 rounded-full inline-flex items-center  transition-colors" onClick={openModal}>
 Book Now <ChevronRight className="ml-2" size={20} />
 </button>
 </div>
