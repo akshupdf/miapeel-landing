@@ -92,7 +92,7 @@ Book Now <ChevronRight className="ml-2" size={20} />
 
 {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg overflow-hidden w-full max-w-md mx-4 relative">
+          <div className="bg-white rounded-lg overflow-hidden w-full max-w-xl mx-4 relative">
             <button className="absolute top-2 right-2 text-gray-600" onClick={closeModal}>
               ✖️
             </button>
@@ -100,7 +100,7 @@ Book Now <ChevronRight className="ml-2" size={20} />
               <img src={logo} alt="Logo" className="w-32" />
             </div>
             <iframe
-              src="https://api.leadconnectorhq.com/widget/form/93hSaxuOFHHyEbt5DXwW"
+              src="https://forms.zohopublic.com/infomia1/form/MIAPEEL/formperma/cEnuJzOhcMyb5f1IgG9MTgVUMmYxKPGC_Ut-QEQmx0E?zf_rszfm=1%27;"
               className="w-full h-96"
               title="Consultation Form"
             ></iframe>
