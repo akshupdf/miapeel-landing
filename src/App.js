@@ -100,7 +100,7 @@ Book Now <ChevronRight className="ml-2" size={20} />
               <img src={logo} alt="Logo" className="w-32" />
             </div>
             <iframe
-              src="https://forms.zohopublic.com/infomia1/form/MIAPEEL/formperma/cEnuJzOhcMyb5f1IgG9MTgVUMmYxKPGC_Ut-QEQmx0E?zf_rszfm=1%27;"
+              src="https://api.leadconnectorhq.com/widget/form/USRwmVu1nCmheXsaAp6N"
               className="w-full h-96"
               title="Consultation Form"
             ></iframe>
